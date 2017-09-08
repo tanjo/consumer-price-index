@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="2015年基準消費者物価指数">
+  <title>2015年基準消費者物価指数</title>
+</head>
+<body>
+  <div class="contents">
+    <div id="chart_div" style="width: 100vw; height: 100vh;"></div>
+  </div>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+
+  window.onresize = function() {
+    drawChart();
+  }
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['年', '総合指数'],
+      ['1970年', 32],
+      ['1971年', 33.9],
+      ['1972年', 35.8],
+      ['1973年', 41.4],
+      ['1974年', 50],
+      ['1975年', 55.2],
+      ['1976年', 60.5],
+      ['1977年', 64.6],
+      ['1978年', 67.1],
+      ['1979年', 70.3],
+      ['1980年', 75.7],
+      ['1981年', 78.7],
+      ['1982年', 80.7],
+      ['1983年', 82.3],
+      ['1984年', 84.1],
+      ['1985年', 85.7],
+      ['1986年', 85.7],
+      ['1987年', 86.1],
+      ['1988年', 86.8],
+      ['1989年', 89.3],
+      ['1990年', 92.1],
+      ['1991年', 94.6],
+      ['1992年', 96.2],
+      ['1993年', 97.4],
+      ['1994年', 97.7],
+      ['1995年', 97.5],
+      ['1996年', 97.9],
+      ['1997年', 99.9],
+      ['1998年', 100.1],
+      ['1999年', 99.6],
+      ['2000年', 99],
+      ['2001年', 98],
+      ['2002年', 97.4],
+      ['2003年', 97.2],
+      ['2004年', 97.1],
+      ['2005年', 96.9],
+      ['2006年', 97.1],
+      ['2007年', 97.5],
+      ['2008年', 98.6],
+      ['2009年', 96.9],
+      ['2010年', 96.4],
+      ['2011年', 96.3],
+      ['2012年', 96.1],
+      ['2013年', 96.9],
+      ['2014年', 99.8],
+      ['2015年', 100],
+      ['2016年', 100]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0,
+                       1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }
+                       ]);
+
+      var options = {
+        title: '2015年基準消費者物価指数',
+        series: {
+          0: {targetAxisIndex: 0}
+        },
+        vAxes: {
+          0: {title: '総合指数'}
+        }
+      };
+
+      new google.visualization.LineChart(document.getElementById('chart_div')).draw(view, options);
+    }
+    </script>
+</body>
+</html>
